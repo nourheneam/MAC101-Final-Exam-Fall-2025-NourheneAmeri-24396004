@@ -2,8 +2,8 @@
  * CS101 Final Exam - File 1: sort_array.cpp
  * The Logic Test: Sorting an Array
  *
- * Student Name: ________________________
- * Date: ________________________
+ * Student Name: Nourhene Ameri
+ * Date: 12/18/2025
  *
  * OBJECTIVE:
  * Write a program that sorts an array of 100 integers in ascending order.
@@ -30,6 +30,7 @@ using namespace std;
 int main()
 {
   // An unsorted array of numbers 1-100 for you to sort
+  // My job is to sort it from smallest to largest
   int numbers[100] = {
       63, 12, 89, 45, 23, 78, 34, 91, 56, 7,
       82, 29, 67, 14, 95, 41, 18, 73, 50, 36,
@@ -42,34 +43,56 @@ int main()
       33, 100, 57, 20, 87, 43, 8, 76, 40, 62,
       28, 90, 55, 17, 79, 4, 64, 2, 53, 60};
 
-  // TODO: Display the array BEFORE sorting
+  // I use cout to display the array before sorting
   cout << "Array before sorting:" << endl;
-  // Hint: Use a loop to print the first 10-20 elements from the numbers array
-  // Example approach: for(int i = 0; i < 10; i++) { cout << numbers[i] << " "; }
+  
+  // I print the first 20 numbers to see the original order
+  for (int i = 0; i < 20; i++)
+  {
+    cout << numbers[i] << " ";
+  }
+  cout << endl;
+  
+  // I will use Bubble Sort:
+  // - Bubble Sort compares neighbors (numbers next to each other)
+  // - If the left number is bigger than the right number, they are in the wrong order
+  // - Then we swap them
+  // - We repeat many passes until everything is sorted
+  
+  // OUTER LOOP (passes) :
+  // one pass pushes the largest remaining value toward the end
+  // Doing many passes makes the whole array sorted
+  for (int pass = 0; pass < 100; pass++)
+  {
+    // INNER LOOP (comparisons) :
+    // This loop walks through the array and compares numbers[j] with numbers[j+1]
+    // We stop at 99 because j+1 must stay inside the array (last index is 99)
+    for (int j = 0; j < 99; j++)
+    {
+        // CONDITION:
+        // If the current element is bigger than the next element,
+        // they are not in ascending order
+        if (numbers[j] > numbers[j+1])
+        {
+            int temp = numbers[j];
+            numbers[j] = numbers[j+1];
+            numbers[j+1] = temp;
+        }
+    }
+    // After each full pass, the array is a little more sorted
+    // The biggest numbers slowly move to the endl
+  }
 
-  // TODO: Implement your sorting algorithm here
-  // BUBBLE SORT APPROACH:
-  // - Outer loop: goes through the array multiple times (think: how many passes do you need?)
-  // - Inner loop: compares adjacent elements (compare each pair in the array)
-  // - If elements are in wrong order, swap them
-  //
-  // THINK ABOUT:
-  // - What condition determines if two numbers are in the "wrong order"?
-  // - How do you compare element at position j with element at position j+1?
-  // - What three steps are needed to swap two values? (Hint: you need a temporary variable)
-  //
-  // STRUCTURE HINT:
-  // for(outer loop - controls how many times we pass through) {
-  //     for(inner loop - goes through comparing adjacent pairs) {
-  //         if(need to swap?) {
-  //             // perform the swap using a temp variable
-  //         }
-  //     }
-  // }
-
-  // TODO: Display the array AFTER sorting
+  // I use cout to display the array after sorting
   cout << "\nArray after sorting:" << endl;
-  // Hint: Print the first 10-20 elements to verify they're now in order (should be 1, 2, 3, ...)
+
+  // I print the first 20 numbers again
+  // If sorting worked, it should start like: 1 2 3 4 5 ...
+  for (int i = 0; i < 20; i++)
+  {
+    cout << numbers[i] << " ";
+  }
+  cout << endl;
 
   return 0;
 }
