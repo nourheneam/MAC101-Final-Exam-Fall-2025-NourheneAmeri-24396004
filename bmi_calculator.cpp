@@ -2,8 +2,8 @@
  * CS101 Final Exam - File 2: bmi_calculator.cpp
  * The Tool Test: BMI Calculator
  *
- * Student Name: ________________________
- * Date: ________________________
+ * Student Name: Nourhene Ameri
+ * Date: 12/18/2025
  *
  * OBJECTIVE:
  * Create an interactive program that calculates a user's Body Mass Index (BMI).
@@ -37,42 +37,64 @@ using namespace std;
 
 int main()
 {
-  // TODO: Declare variables for weight, height, and BMI
-  // Use 'double' so you can handle decimal values
-  // Hint: You'll need three double variables
+  // I use double because weight and height can have decimal values
+  // This help make the BMI calculation more accurate
+  double weight;
+  double height;
+  double bmi;
 
-  // TODO: Greet the user and explain what the program does
+  // I use cout to explain the purpose of the program
   cout << "Welcome to the BMI Calculator!" << endl;
   cout << "This program will calculate your Body Mass Index." << endl;
   cout << endl;
 
-  // TODO: Ask for the user's weight in kilograms
-  // Hint: Use cout to ask the question, then cin to store the answer in your weight variable
+  // I use cout to ask for the weight in kilograms
+  // I use cin to store the user's input
+  cout << "Enter your weight in kilograms: ";
+  cin >> weight;
+  
+  // I do the same thing that I did with weight
+  // I use cout to ask and cin to store the height
+  cout << "Enter you height in meters: ";
+  cin >> height;
 
-  // TODO: Ask for the user's height in meters
-  // Hint: Same pattern as weight - ask with cout, capture with cin
+  // I apply the BMI formula given in the question
+  bmi = weight / (height * height);
 
-  // TODO: Calculate the BMI
-  // Formula: BMI = weight / (height × height)
-  // Hint: Divide weight by height squared. Remember to use * for multiplication in C++
-
-  // TODO: Display the result
-  // Hint: Use cout to display a message and the bmi variable
-
-  // BONUS TODO: Add if-else statements to tell the user their BMI category
-  // THINK ABOUT:
-  // - You need to check the bmi value against the category thresholds
-  // - Use if, else if, and else to handle the different ranges
-  // - Start with the lowest threshold (< 18.5) and work your way up
-  //
-  // STRUCTURE HINT:
-  // if(bmi is less than first threshold) {
-  //     tell user first category
-  // } else if(bmi is less than second threshold) {
-  //     tell user second category
-  // } ... continue for all categories
-
+  // I use cout to display the result
+  // this prints the result of the BMI for the user to see
+  cout << "\nYour BMI is: " << bmi << endl;
+  
+  // I check the BMI value starting from the lowest range
+  // I check if the BMI is less than 18.5
+  // If this condition is true, the user is underweight
+  if (bmi < 18.5)
+  {
+    cout << "Category: Underweight" << endl;
+  }
+  
+  // If the first condition is false, I check the next range
+  // This checks if the BMI is the normal weight range
+  else if (bmi < 25)
+  {
+    cout << "Category: Normal weight" << endl;
+  }
+  
+  // If BMI is higher, I check if it falls in the overweight range
+  else if (bmi < 30)
+  {
+    cout << "Category: Overweight" << endl;
+  }
+  
+  // If none of the above conditions are true
+  // The BMI is 30 or higher, it means in ther obese range
+  else
+  {
+    cout << "Category: Obese" << endl;
+  }
+  
+  // This is a final message to end the program politely, using cout
   cout << "\nThank you for using the BMI Calculator!" << endl;
-
+  
   return 0;
 }
